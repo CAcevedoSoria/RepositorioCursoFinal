@@ -14,7 +14,7 @@ public interface ServiceCourse {
 
   public Mono<Void> delete(Course course);
 
-  public Mono<Course> findBynameCourse(String name);
+
 
   /**
    * Find full name mono.

@@ -32,8 +32,5 @@ public class ServiceCourseImpl implements ServiceCourse {
     return courseRepository.delete(student);
   }
 
-  @Override
-  public Mono<Course> findBynameCourse(String name) {
-    return courseRepository.findBynameCourse(name);
-  }
+
 }

@@ -59,12 +59,7 @@ public class CourseController {
         .defaultIfEmpty(new ResponseEntity<Void>(HttpStatus.NOT_FOUND));
   }
 
-  @GetMapping("name/{course}")
-  public Mono<ResponseEntity<Course>> findBynameCourse(@PathVariable String course) {
-    return serviceCourse
-        .findBynameCourse(course)
-        .map(p -> ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON_UTF8).body(p));
-  }
+
 
   @GetMapping("/{id}")
   public Mono<ResponseEntity<Course>> findByCourseId(@PathVariable String id) {
@@ -75,15 +70,20 @@ public class CourseController {
   }
 
   @PutMapping("/{id}")
-  public Mono<ResponseEntity<Course>> update(@RequestBody Course student, @PathVariable String id) {
+  public Mono<ResponseEntity<Course>> update(@RequestBody Course course, @PathVariable String id) {
     return serviceCourse
         .findById(id)
         .flatMap(
             p -> {
-              p.setNameCourse(student.getNameCourse());
-              p.setStatus(student.getStatus());
-              p.setQuotaMax(student.getQuotaMax());
-              p.setQuotaMin(student.getQuotaMin());
+              p.setNameCourse(course.getNameCourse());
+              p.setStatus(course.getStatus());
+              p.setQuotaMax(course.getQuotaMax());
+              p.setQuotaMin(course.getQuotaMin());
+              p.setNota1(course.getNota1());
+              p.setNota2(course.getNota2());
+              p.setNota3(course.getNota3());
+              p.setDocument(course.getDocument());
+              p.setDniteacher(course.getDniteacher());
 
               return serviceCourse.save(p);
             })

@@ -13,12 +13,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(collection = "Course")
+@Document(collection = "Course2")
 public class Course {
 
   @Id private String idCourse;
-  private String nameCourse;
+    private String nameCourse;
   private String status;
   private String quotaMin;
   private String quotaMax;
+  private Double nota1;
+  private Double nota2;
+  private Double nota3;
+  private String document;
+  private String dniteacher;
+
+
+
 }
